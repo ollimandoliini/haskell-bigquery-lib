@@ -1,0 +1,74 @@
+cabal-version:   3.0
+name:            haskell-bigquery
+version:         0.1.0.0
+license:         MIT
+license-file:    LICENSE
+author:          Olli Kortelahti
+maintainer:      ollikortelahti@gmail.com
+build-type:      Simple
+extra-doc-files: CHANGELOG.md
+
+common warnings
+  ghc-options: -Wall
+
+library
+  import:           warnings
+  exposed-modules:
+    Database.BigQuery
+    Database.BigQuery.Types
+    Database.BigQuery.TH
+    Credentials
+    Types
+  build-depends:
+    , aeson
+    , base        ^>=4.18.0.0
+    , bytestring
+    , cryptonite
+    , jose
+    , lens
+    , monad-time
+    , mtl
+    , req
+    , text
+    , time
+    , x509
+    , x509-store
+    , containers
+    , template-haskell
+    , vector
+
+  -- Directories containing source files.
+  hs-source-dirs:   lib
+
+  -- Base language which the package is written in.
+  default-language: GHC2021
+
+executable haskell-bigquery
+  -- Import common warning flags.
+  import:           warnings
+
+  -- .hs or .lhs file containing the Main module.
+  main-is:          Main.hs
+
+  -- Modules included in this executable, other than Main.
+  -- other-modules:
+
+  -- LANGUAGE extensions used by modules in this package.
+  -- other-extensions:
+
+  -- Other library packages from which modules are imported.
+  build-depends:
+    , base              ^>=4.18.0.0
+    , haskell-bigquery
+    , template-haskell
+    , aeson-pretty
+    , bytestring
+    , aeson
+    , text
+    , vector
+
+  -- Directories containing source files.
+  hs-source-dirs:   app
+
+  -- Base language which the package is written in.
+  default-language: GHC2021
